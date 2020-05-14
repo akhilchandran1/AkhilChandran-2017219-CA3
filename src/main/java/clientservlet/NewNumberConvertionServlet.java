@@ -23,6 +23,7 @@ import javax.xml.ws.WebServiceRef;
 public class NewNumberConvertionServlet extends HttpServlet {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/www.dataaccess.com/webservicesserver/NumberConversion.wso.wsdl")
+    // @WebServiceRef(wsdlLocation = "https://www.dataaccess.com/webservicesserver/NumberConversion.wso?WSDL")
     private NumberConversion service;
 
     /**
@@ -34,18 +35,27 @@ public class NewNumberConvertionServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
+/*
             com.dataaccess.webservicesserver.NumberConversionSoapType port = service.getNumberConversionSoap();
             // TODO initialize WS operation arguments here
-            java.math.BigInteger ubiNum = new java.math.BigInteger("CNumber");
+            
+            String num = request.getParameter("CNumber");
+            
+            java.math.BigInteger ubiNum = new java.math.BigInteger(num);
             // TODO process result here
             java.lang.String result = port.numberToWords(ubiNum);
             out.println("Result = " + result);
+            
+*/
 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -53,8 +63,10 @@ public class NewNumberConvertionServlet extends HttpServlet {
             out.println("<title>Servlet NewNumberConvertionServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            //out.println("<h1>Servlet NewNumberConvertionServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet NewNumberConvertionServlet at " + result + "</h1>");
+            out.println(").");
+            out.println("<h1>Its working</h1>");
+            out.println("<h1>Servlet NewNumberConvertionServlet at " + request.getContextPath() + "</h1>");
+           // out.println("<h1>Servlet NewNumberConvertionServlet at " + result +"</h1>");
             out.println("</body>");
             out.println("</html>");
         }
