@@ -1,0 +1,11 @@
+com/mycompany/akhilchandran/ca3/resources/JavaEE8Resource.class
+com/dataaccess/webservicesserver/NumberToDollarsResponse.class
+com/dataaccess/webservicesserver/NumberToWordsResponse.class
+com/dataaccess/webservicesserver/NumberConversionSoapType.class
+com/dataaccess/webservicesserver/ObjectFactory.class
+com/dataaccess/webservicesserver/package-info.class
+com/mycompany/akhilchandran/ca3/JAXRSConfiguration.class
+com/dataaccess/webservicesserver/NumberToWords.class
+com/dataaccess/webservicesserver/NumberToDollars.class
+com/dataaccess/webservicesserver/NumberConversion.class
+clientservlet/NewNumberConvertionServlet.class
