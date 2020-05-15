@@ -29,7 +29,6 @@ import javax.xml.ws.WebServiceRef;
 public class NewNumberConvertionServlet extends HttpServlet {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/www.dataaccess.com/webservicesserver/NumberConversion.wso.wsdl")
-    // @WebServiceRef(wsdlLocation = "https://www.dataaccess.com/webservicesserver/NumberConversion.wso?WSDL")
     private NumberConversion service;
 
     /**
@@ -80,15 +79,16 @@ public class NewNumberConvertionServlet extends HttpServlet {
 
             com.dataaccess.webservicesserver.NumberConversionSoapType port = service.getNumberConversionSoap();
             // TODO initialize WS operation arguments here
-            
+
             String num = request.getParameter("CNumber");
-            
+
             java.math.BigInteger ubiNum = new java.math.BigInteger(num);
+            java.math.BigDecimal dNum = new java.math.BigDecimal(num);
             // TODO process result here
-            java.lang.String result = port.numberToWords(ubiNum);
-            out.println("Result = " + result);
-            
-           
+            java.lang.String resultWords = port.numberToWords(ubiNum);
+            // TODO process result here
+            java.lang.String resultDollars = port.numberToDollars(dNum);
+   
 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -98,8 +98,9 @@ public class NewNumberConvertionServlet extends HttpServlet {
             out.println("<body>");
             out.println(").");
             out.println("<h1>Its working</h1>");
-            out.println("<h1>Servlet NewNumberConvertionServlet at " + request.getContextPath() + "</h1>");
-            // out.println("<h1>Servlet NewNumberConvertionServlet at " + result +"</h1>");
+            //out.println("<h1>Servlet NewNumberConvertionServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>In Words: " + ""+resultWords + "</h1>");
+            out.println("<h1>In Dollars: " +""+ resultDollars + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
