@@ -128,8 +128,8 @@ public class NewNumberConvertionServlet extends HttpServlet {
                     + "</style>");
             out.println("</head>");
             out.println("<body><div class=\"bodyText\">");
-            out.println("<h1>In Words: " + "<font color='red'> " + resultWords + "</font></h1>");
-            out.println("<h1>In Dollars: " + "<font color='red'>" + resultDollars + "</font></h1></div>");
+            out.println("<h1>In Words: " + "<font color=#0ffa02> " + resultWords + "</font></h1>");
+            out.println("<h1>In Dollars: " + "<font color=#faee07>" + resultDollars + "</font></h1></div>");
             out.println("        <footer class=\"footer\"> <!--start footer-->\n"
                     + "            <div class=\"container\"> <!--div start with class-->\n"
                     + "                <!--footer with copy symbol, class, heart symbole and my name and student id-->\n"
