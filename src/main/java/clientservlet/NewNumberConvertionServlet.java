@@ -8,6 +8,12 @@ package clientservlet;
 import com.dataaccess.webservicesserver.NumberConversion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,16 +41,43 @@ public class NewNumberConvertionServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        
+
+        TrustManager[] trustAllCerts = new TrustManager[]{
+            new X509TrustManager() {
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+
+                public void checkClientTrusted(
+                        java.security.cert.X509Certificate[] certs, String authType) {
+                }
+
+                public void checkServerTrusted(
+                        java.security.cert.X509Certificate[] certs, String authType) {
+                }
+            }
+        };
+
+// Install the all-trusting trust manager
+        try {
+            SSLContext sc = SSLContext.getInstance("SSL");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        } catch (Exception e) {
+        }
+
+// Now you can access an https URL without having the certificate in the truststore
+        try {
+            URL url = new URL("https://hostname/index.html");
+        } catch (MalformedURLException e) {
+        }
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-/*
+
             com.dataaccess.webservicesserver.NumberConversionSoapType port = service.getNumberConversionSoap();
             // TODO initialize WS operation arguments here
             
@@ -55,7 +88,7 @@ public class NewNumberConvertionServlet extends HttpServlet {
             java.lang.String result = port.numberToWords(ubiNum);
             out.println("Result = " + result);
             
-*/
+           
 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -66,7 +99,7 @@ public class NewNumberConvertionServlet extends HttpServlet {
             out.println(").");
             out.println("<h1>Its working</h1>");
             out.println("<h1>Servlet NewNumberConvertionServlet at " + request.getContextPath() + "</h1>");
-           // out.println("<h1>Servlet NewNumberConvertionServlet at " + result +"</h1>");
+            // out.println("<h1>Servlet NewNumberConvertionServlet at " + result +"</h1>");
             out.println("</body>");
             out.println("</html>");
         }
