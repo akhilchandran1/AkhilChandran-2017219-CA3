@@ -88,19 +88,54 @@ public class NewNumberConvertionServlet extends HttpServlet {
             java.lang.String resultWords = port.numberToWords(ubiNum);
             // TODO process result here
             java.lang.String resultDollars = port.numberToDollars(dNum);
-   
 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet NewNumberConvertionServlet</title>");
+            out.println("<style>h1{font: 3rem \"Roboto\", sans-serif; color:white;"
+                    + "    font-weight: bold; /* specifying font weight */\n"
+                    + "    font-size: 4rem; /* specifying font size */\n"
+                    + "    letter-spacing: 0.02em; /* specifying letter spacing */\n"
+                    + "    padding: 0 0 30px 0; /* specifying padding */"
+                    + "}"
+                    + "body{background:#012631; text-align: center;}"
+                    + ".bodyText{padding-top:15%;}"
+                    + "/* FOOTER\n"
+                    + "–––––––––––––––––––––––––––––––––––––––––––––––––– */\n"
+                    + ".footer {\n"
+                    + "    text-align: center;\n"
+                    + "    font-size: 1rem;\n"
+                    + "    color: white;\n"
+                    + "    margin-top: 40px;\n"
+                    + "    color: #ffffff;\n"
+                    + "}\n"
+                    + "\n"
+                    + "footer {\n"
+                    + "    position: fixed; \n"
+                    + "    padding: 10px 10px 0px 10px; \n"
+                    + "    bottom: 0; \n"
+                    + "    width: 100%;  \n"
+                    + "    height: 40px;\n"
+                    + "}\n"
+                    + "\n"
+                    + ".heartSymbel {\n"
+                    + "    color: rgb(238, 6, 6);\n"
+                    + "    font-size: 16px;\n"
+                    + "    padding-left: 5px;\n"
+                    + "    padding-right: 5px;\n"
+                    + "}"
+                    + "</style>");
             out.println("</head>");
-            out.println("<body>");
-            out.println(").");
-            out.println("<h1>Its working</h1>");
-            //out.println("<h1>Servlet NewNumberConvertionServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>In Words: " + ""+resultWords + "</h1>");
-            out.println("<h1>In Dollars: " +""+ resultDollars + "</h1>");
+            out.println("<body><div class=\"bodyText\">");
+            out.println("<h1>In Words: " + "<font color='red'> " + resultWords + "</font></h1>");
+            out.println("<h1>In Dollars: " + "<font color='red'>" + resultDollars + "</font></h1></div>");
+            out.println("        <footer class=\"footer\"> <!--start footer-->\n"
+                    + "            <div class=\"container\"> <!--div start with class-->\n"
+                    + "                <!--footer with copy symbol, class, heart symbole and my name and student id-->\n"
+                    + "                <small>&copy; 2020 made with<span class=\"heartSymbel\">&#10084; </span>by Akhil Chandran - 2017219</small>\n"
+                    + "            </div> <!--end div-->\n"
+                    + "        </footer> <!--end footer-->");
             out.println("</body>");
             out.println("</html>");
         }

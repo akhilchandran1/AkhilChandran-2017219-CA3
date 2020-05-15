@@ -15,8 +15,6 @@ body { /* body */
     background-image: url("../image/gradient.jpg"); /* specifying background image */
     background-repeat: no-repeat; /* specifying no repet backgrount image */
     color: #041333; /* specifying color (getting from root colors)*/
-    background-attachment: fixed; /* specifying backgrount attachment is fixed */
-    background-position: bottom; /* specifying the background position is bottuo*/
 }
 input[type=text] { /* imput with type text */
     border: none; /* specifying border is none */
@@ -104,8 +102,7 @@ footer {
     position: fixed; 
     padding: 10px 10px 0px 10px; 
     bottom: 0; 
-    width: 100%; 
-    /* Height of the footer*/  
+    width: 100%;  
     height: 40px;
 }
 
