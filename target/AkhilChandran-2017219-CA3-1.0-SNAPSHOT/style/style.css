@@ -1,0 +1,117 @@
+/*
+start(*) is a universal selector.(select all elements)
+this will applicable in all browsers. 
+*/
+* {
+    margin: 0; /* specifying margin */
+    padding: 0; /* specifying padding */
+    box-sizing: border-box;  /* specifying box size*/
+    font-weight: normal; /* specifying font weight */
+}
+
+body { /* body */
+    padding: 50px; /* specifying padding */
+    font: 1rem/1.3 "Roboto", sans-serif; /* specifying font*/
+    background-image: url("../image/gradient.jpg"); /* specifying background image */
+    background-repeat: no-repeat; /* specifying no repet backgrount image */
+    color: #041333; /* specifying color (getting from root colors)*/
+    background-attachment: fixed; /* specifying backgrount attachment is fixed */
+    background-position: bottom; /* specifying the background position is bottuo*/
+}
+input[type=text] { /* imput with type text */
+    border: none; /* specifying border is none */
+    color: inherit; /* specifying color */
+    letter-spacing: 1.5px; /* specifying letter spacing */
+    background: none; /* specifying backgrount is none*/
+    outline: none;  /* specifying is none*/
+}
+input { /* input */
+    -webkit-appearance: none; /* specifying no webkit Appearance to give different design */
+}
+
+input::placeholder { /*specifying input::placeholder from form from topcontend class */
+    color: currentColor; /* specifying color */
+}
+input { /*selecting input from form from topcontend class */
+    font-size: 2rem; /* specifying font size */
+    border-bottom: 1px solid; /* specifying border bpttom*/
+    height: 40px; /* specifying height */
+    padding: 5px 5px 10px; /* specifying padding */
+}
+
+.topcontainer {/* topcontainer class and datacontainer class */
+    width: 100%; /* specifying width */
+    max-width: 1200px; /* specifying maximum width */
+    margin: 0 auto; /* specifying margin */
+    padding: 0 15px; /* specifying padding */
+}
+
+.topcontend { /* topcontend class*/
+    color: white; /* specifying color (getting from root colers) */
+}
+
+.heading { /* heading class */
+    font-weight: bold; /* specifying font weight */
+    font-size: 4rem; /* specifying font size */
+    letter-spacing: 0.02em; /* specifying letter spacing */
+    padding: 0 0 30px 0; /* specifying padding */
+}
+
+.topcontend form { /* form inside topcontend class */
+    position: relative; /* specifying position */
+    display: flex; /* specifying display */
+    align-items: center; /* specifying align items */
+}
+
+.topcontend form input { /*selecting input from form from topcontend class */
+    font-size: 2rem; /* specifying font size */
+    border-bottom: 1px solid; /* specifying border bpttom*/
+    height: 40px; /* specifying height */
+    padding: 5px 5px 10px; /* specifying padding */
+    width: 357px;
+}
+
+.topcontend form input::placeholder { /*specifying input::placeholder from form from topcontend class */
+    color: currentColor; /* specifying color */
+}
+
+.topcontend form button { /* selecting button from form inside of class topcontend */
+    font-size: 1rem; /* specifying font size */
+    font-weight: bold; /* specifying font weight */
+    background: orange; /* specifying background from root colors */
+    transition: background 0.3s ease-in-out;  /* specifying transition*/
+    letter-spacing: 0.1em; /* specifying letter spacing */
+    padding: 18px 65px; /* specifying padding */
+    margin-left: 15px; /* specifying left margin */
+    border-radius: 21px; /* specifying border radius */
+}
+
+.topcontend form button:hover { /* specifying button:hover from form inside of class topcontend */
+    background: greenyellow; /* specifying backgrount color from root colors */
+}
+
+/* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.footer {
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    margin-top: 40px;
+    color: #ffffff;
+}
+
+footer {
+    position: fixed; 
+    padding: 10px 10px 0px 10px; 
+    bottom: 0; 
+    width: 100%; 
+    /* Height of the footer*/  
+    height: 40px;
+}
+
+.heartSymbel {
+    color: rgb(238, 6, 6);
+    font-size: 16px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
