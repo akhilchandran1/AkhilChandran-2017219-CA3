@@ -3,21 +3,52 @@
     <head>
         <title>Number Conversion</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <!-- Import our css styles -->
- <link rel="stylesheet" href="style/style.css">
+        <!-- Import our CSS styles -->
+        <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
         <section class="topcontend"> <!--section start with a class-->
             <div class="topcontainer"> <!--div start with a class-->
-                <h1 class="heading">Number Conversion App - CA3</h1> <!--h1 heading with a class and mountion symbol-->
+                <h1 class="heading">Number Conversion App - CA3</h1> <!--h1 heading-->
+                <h1>Number To Dollar and Words</h1> <!--h1 heading-->
+                <br><br><!-- break-->
+                 <!-- ere we are adding name, method and action -->
                 <form name="Test" method="post" action="NewNumberConvertionServlet">
-                    <input type="text" id="CNumber" name="CNumber" placeholder="Number for Conversion" autofocus oninvalid="alert('You must enter a Number !!');" required>
+                    <!-- here we are adding input type number, id, name, minimum input number (1), alert with a message for invalid input  -->
+                    <input type="number"  id="CNumber" name="CNumber" min="1" autofocus oninvalid="alert('You must enter a integer Number above 0 !!');" required>
                     <button type="submit">Submit</button>
                 </form> 
             </div> <!--div end-->
         </section> <!--section end-->
+        <br><br>
+        <section class="topcontend"> <!--section start with a class-->
+            <div class="topcontainer"> <!--div start with a class-->
+                <h1>Number To Words</h1> <!--h1 heading-->
+                <br><br><br><!-- break-->
+                <!-- ere we are adding name, method and action -->
+                <form name="Test" method="post" action="NewNumberConvertionServlet">
+                    <!-- here we are adding input type number, id, name, minimum input number (1), alert with a message for invalid input  -->
+                    <input type="number" id="CNumberW" name="CNumberW"  min="1" autofocus oninvalid="alert('You must enter a integer Number above 0 !!');" required>
+                    <button type="submit">Submit</button>
+                </form> 
+            </div> <!--div end-->
+        </section> <!--section end-->
+        <br><br><!-- break-->
+        <section class="topcontend"> <!--section start with a class-->
+            <div class="topcontainer"> <!--div start with a class-->
+                <h1>Number To Dollar</h1> <!--h1 heading-->
+                <br><br><br>
+                 <!-- ere we are adding name, method and action -->
+                <form name="Test" method="post" action="NewNumberConvertionServlet">
+                    <!-- here we are adding input type number, id, name, minimum input number (1), alert with a message for invalid input  -->
+                    <input type="number"  id="CNumberD" name="CNumberD" min="1" autofocus oninvalid="alert('You must enter a integer Number above 0 !!');" required>
+                    <button type="submit">Submit</button>
+                </form> 
+            </div> <!--div end-->
+        </section> <!--section end-->
+        <br><br><!-- break-->
         <footer class="footer"> <!--start footer-->
-            <div class="container"> <!--div start with class-->
+            <div> <!--div start with class-->
                 <!--footer with copy symbol, class, heart symbole and my name and student id-->
                 <small>&copy; 2020 made with<span class="heartSymbel">&#10084; </span>by Akhil Chandran - 2017219</small>
             </div> <!--end div-->

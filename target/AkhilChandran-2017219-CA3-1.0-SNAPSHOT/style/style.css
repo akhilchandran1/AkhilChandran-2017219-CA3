@@ -16,13 +16,14 @@ body { /* body */
     background-repeat: no-repeat; /* specifying no repet backgrount image */
     color: #041333; /* specifying color (getting from root colors)*/
 }
-input[type=text] { /* imput with type text */
+input[type=number] { /* imput with type number */
     border: none; /* specifying border is none */
     color: inherit; /* specifying color */
     letter-spacing: 1.5px; /* specifying letter spacing */
     background: none; /* specifying backgrount is none*/
     outline: none;  /* specifying is none*/
 }
+
 input { /* input */
     -webkit-appearance: none; /* specifying no webkit Appearance to give different design */
 }

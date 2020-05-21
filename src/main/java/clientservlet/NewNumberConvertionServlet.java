@@ -40,9 +40,10 @@ public class NewNumberConvertionServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+ // this code is to bypasses the SSL Trust Store
         TrustManager[] trustAllCerts = new TrustManager[]{
             new X509TrustManager() {
                 public java.security.cert.X509Certificate[] getAcceptedIssuers() {
@@ -72,23 +73,80 @@ public class NewNumberConvertionServlet extends HttpServlet {
             URL url = new URL("https://hostname/index.html");
         } catch (MalformedURLException e) {
         }
-
+        String number = "";
+        java.lang.String resultWords = "";
+        java.lang.String resultDollars = "";
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            // getting user input
+            String n = request.getParameter("CNumber");
+            String nw = request.getParameter("CNumberW");
+            String nd = request.getParameter("CNumberD");
 
             com.dataaccess.webservicesserver.NumberConversionSoapType port = service.getNumberConversionSoap();
             // TODO initialize WS operation arguments here
+            
+            // this will do if the user input is not null on n
+            if (n != null) {
 
-            String num = request.getParameter("CNumber");
+                number = n; // assigning value (user input to number)
+                // converting to dollars and words
+                java.math.BigInteger ubiNum = new java.math.BigInteger(number);
+                java.math.BigDecimal dNum = new java.math.BigDecimal(number);
+                // TODO process result here
+                resultWords = port.numberToWords(ubiNum);
+                // TODO process result here
+                resultDollars = port.numberToDollars(dNum);
+                // adding HTML (print result) and CSS (style)
+            out.println("<style>h1{font: 3rem \"Roboto\", sans-serif; color:white;"
+                    + "    font-weight: bold; /* specifying font weight */\n"
+                    + "    font-size: 4rem; /* specifying font size */\n"
+                    + "    letter-spacing: 0.02em; /* specifying letter spacing */\n"
+                    + "    padding: 0 0 30px 0; /* specifying padding */"
+                    + "}"
+                    + "body{background:#012631;}"
+                    + ".bodyText{padding-top:15%;  text-align: center;}"
+                     + "</style>");
+                out.println("<div class=\"bodyText\"><h1>In Words: " + "<font color=#0ffa02> " + resultWords + "</font></h1>");
+                out.println("<h1>In Dollars: " + "<font color=#faee07>" + resultDollars + "</font></h1></div>");
+            } else if (nw != null) { // this will do if the user input is not null on nw
+                number = nw; // assigning value (user input to number)
+                // converting to words
+                java.math.BigInteger ubiNum = new java.math.BigInteger(number);
+                // TODO process result here
+                resultWords = port.numberToWords(ubiNum);
+                 // adding HTML (print result) and CSS (style)
+                            out.println("<style>h1{font: 3rem \"Roboto\", sans-serif; color:white;"
+                    + "    font-weight: bold; /* specifying font weight */\n"
+                    + "    font-size: 4rem; /* specifying font size */\n"
+                    + "    letter-spacing: 0.02em; /* specifying letter spacing */\n"
+                    + "    padding: 0 0 30px 0; /* specifying padding */"
+                    + "}"
+                    + "body{background:#012631;}"
+                    + ".bodyText{padding-top:15%;  text-align: center;}"
+                     + "</style>");
+                out.println("<div class=\"bodyText\"><h1>In Words: " + "<font color=#0ffa02> " + resultWords + "</font></h1></div>");
+            } else if (nd != null) { // this will do if the user input is not null on nd
+                number = nd; // assigning value (user input to number)
+                // converting to dollars
+                java.math.BigDecimal dNum = new java.math.BigDecimal(number);;
+                // TODO process result here
+                resultDollars = port.numberToDollars(dNum);
+                 // adding HTML (print result) and CSS (style)
+                            out.println("<style>h1{font: 3rem \"Roboto\", sans-serif; color:white;"
+                    + "    font-weight: bold; /* specifying font weight */\n"
+                    + "    font-size: 4rem; /* specifying font size */\n"
+                    + "    letter-spacing: 0.02em; /* specifying letter spacing */\n"
+                    + "    padding: 0 0 30px 0; /* specifying padding */"
+                    + "}"
+                    + "body{background:#012631;}"
+                    + ".bodyText{padding-top:15%;  text-align: center;}"
+                     + "</style>");
+                out.println("<div class=\"bodyText\"><h1>In Dollars: " + "<font color=#faee07>" + resultDollars + "</font></h1></div>");
 
-            java.math.BigInteger ubiNum = new java.math.BigInteger(num);
-            java.math.BigDecimal dNum = new java.math.BigDecimal(num);
-            // TODO process result here
-            java.lang.String resultWords = port.numberToWords(ubiNum);
-            // TODO process result here
-            java.lang.String resultDollars = port.numberToDollars(dNum);
-
+            }
+            // adding HTML page with footer and CSS styling 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -99,8 +157,8 @@ public class NewNumberConvertionServlet extends HttpServlet {
                     + "    letter-spacing: 0.02em; /* specifying letter spacing */\n"
                     + "    padding: 0 0 30px 0; /* specifying padding */"
                     + "}"
-                    + "body{background:#012631; text-align: center;}"
-                    + ".bodyText{padding-top:15%;}"
+                    + "body{background:#012631;}"
+                    + ".bodyText{padding-top:15%;  text-align: center;}"
                     + "/* FOOTER\n"
                     + "–––––––––––––––––––––––––––––––––––––––––––––––––– */\n"
                     + ".footer {\n"
@@ -127,9 +185,8 @@ public class NewNumberConvertionServlet extends HttpServlet {
                     + "}"
                     + "</style>");
             out.println("</head>");
-            out.println("<body><div class=\"bodyText\">");
-            out.println("<h1>In Words: " + "<font color=#0ffa02> " + resultWords + "</font></h1>");
-            out.println("<h1>In Dollars: " + "<font color=#faee07>" + resultDollars + "</font></h1></div>");
+            out.println("<body>");
+
             out.println("        <footer class=\"footer\"> <!--start footer-->\n"
                     + "            <div class=\"container\"> <!--div start with class-->\n"
                     + "                <!--footer with copy symbol, class, heart symbole and my name and student id-->\n"
